@@ -5,4 +5,5 @@ package/
 ipwnder_*
 *.o
 *.bin
+*.deb
 rom/

@@ -1,0 +1,10 @@
+Package: ipwnderlite
+Name: iPwnder Lite
+Version: 1.0.57
+Architecture: iphoneos-arm
+Description: iPwnder Lite for iPhoneOS.
+Depiction: https://raw.githubusercontent.com/dora2ios/ipwnder_lite/fba4c52bfeaa44ea2a51cd89e0fc48a906d31d9d/README.md
+Maintainer: sakuRdev/dora2ios
+Author: sakuRdev/dora2ios
+Section: System
+Depends: firmware (>= 9.0), curl
