@@ -31,25 +31,14 @@ const char *p101_ibss = "image3/ibss.p101";
 const char *p102_ibss = "image3/ibss.p102";
 const char *p103_ibss = "image3/ibss.p103";
 #else /* !IPHONEOS_ARM */
-#ifdef IPHONEOS_ARM64
-char *outdir = "/var/jb/tmp/image3/";
-const char *n41_ibss = "/var/jb/tmp/image3/ibss.n41";
-const char *n42_ibss = "/var/jb/tmp/image3/ibss.n42";
-const char *n48_ibss = "/var/jb/tmp/image3/ibss.n48";
-const char *n49_ibss = "/var/jb/tmp/image3/ibss.n49";
-const char *p101_ibss = "/var/jb/tmp/image3/ibss.p101";
-const char *p102_ibss = "/var/jb/tmp/image3/ibss.p102";
-const char *p103_ibss = "/var/jb/tmp/image3/ibss.p103";
-#else
-char *outdir = "/tmp/image3/";
-const char *n41_ibss = "/tmp/image3/ibss.n41";
-const char *n42_ibss = "/tmp/image3/ibss.n42";
-const char *n48_ibss = "/tmp/image3/ibss.n48";
-const char *n49_ibss = "/tmp/image3/ibss.n49";
-const char *p101_ibss = "/tmp/image3/ibss.p101";
-const char *p102_ibss = "/tmp/image3/ibss.p102";
-const char *p103_ibss = "/tmp/image3/ibss.p103";
-#endif
+char *outdir = "/var/mobile/image3/";
+const char *n41_ibss = "/var/mobile/image3/ibss.n41";
+const char *n42_ibss = "/var/mobile/image3/ibss.n42";
+const char *n48_ibss = "/var/mobile/image3/ibss.n48";
+const char *n49_ibss = "/var/mobile/image3/ibss.n49";
+const char *p101_ibss = "/var/mobile/image3/ibss.p101";
+const char *p102_ibss = "/var/mobile/image3/ibss.p102";
+const char *p103_ibss = "/var/mobile/image3/ibss.p103";
 #endif /* IPHONEOS_ARM */
 
 static int dl_file(const char* url, const char* path, const char* realpath)
