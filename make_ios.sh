@@ -56,9 +56,10 @@ clang -isysroot $IOS_SDK $FILES -I./ra1npoc/src/include -I./include -lz $LIBCURL
 strip ipwnder_lite64 && ldid -S ipwnder_lite64
 
 # Join them together
-lipo -create -output ipwnder_lite -arch armv7 ipwnder_iphoneos -arch arm64 ipwnder_iphoneos64 && rm -f -- ipwnder_iphoneos* && \
-codesign -f -s - --entitlements ent.xml -i ipwnder_lite ipwnder_lite && \
-codesign -f -s - --entitlements ent.xml -i ipwnder_lite64 ipwnder_lite64
+lipo -create -output ipwnder_lite -arch armv7 ipwnder_iphoneos -arch arm64 ipwnder_iphoneos64 && rm -f -- ipwnder_iphoneos*
+
+ldid -Sent.xml ipwnder_lite
+ldid -Sent.xml ipwnder_lite64
 
 # Create rootful DEB file
 rm -rf -- package && mkdir -p package/usr/local/bin && \
