@@ -2,7 +2,7 @@
 .DS_Store
 image3/ibss*
 package/
-ipwnder_*
+ipwnder*
 *.o
 *.bin
 *.deb

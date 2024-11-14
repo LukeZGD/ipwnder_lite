@@ -1,7 +1,8 @@
-Package: ipwnderlite
+Package: ipwnderlite32
 Name: iPwnder Lite
-Version: 1.0.62
+Version: 1.0.63
 Architecture: iphoneos-arm
+Conflicts: ipwnderlite
 Description: iPwnder Lite for iPhoneOS.
 Depiction: https://raw.githubusercontent.com/dora2ios/ipwnder_lite/fba4c52bfeaa44ea2a51cd89e0fc48a906d31d9d/README.md
 Maintainer: sakuRdev/dora2ios
