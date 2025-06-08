@@ -1,6 +1,6 @@
 Package: ipwnderlite64
 Name: iPwnder Lite (iOS 11+)
-Version: 1.0.68
+Version: 1.0.69
 Architecture: iphoneos-arm
 Conflicts: ipwnderlite
 Description: iPwnder Lite for iPhoneOS.
