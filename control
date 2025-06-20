@@ -1,6 +1,6 @@
 Package: ipwnderlite32
 Name: iPwnder Lite
-Version: 1.0.69
+Version: 1.0.70
 Architecture: iphoneos-arm
 Conflicts: ipwnderlite
 Description: iPwnder Lite for iPhoneOS.
@@ -8,4 +8,4 @@ Depiction: https://raw.githubusercontent.com/dora2ios/ipwnder_lite/fba4c52bfeaa4
 Maintainer: sakuRdev/dora2ios
 Author: sakuRdev/dora2ios
 Section: System
-Depends: firmware (>= 9.0), curl, com.ra9stuff.accessoryalertblocker
+Depends: firmware (>= 9.0), firmware (<< 11.0), curl, com.ra9stuff.accessoryalertblocker
