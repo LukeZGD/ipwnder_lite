@@ -1,6 +1,6 @@
 Package: ipwnderlite32
 Name: iPwnder Lite
-Version: 1.0.70
+Version: 1.0.71
 Architecture: iphoneos-arm
 Conflicts: ipwnderlite
 Description: iPwnder Lite for iPhoneOS.

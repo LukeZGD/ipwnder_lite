@@ -8,25 +8,22 @@ set -e
 # This file was derived in part from https://danylokos.github.io/0x05/ as well as the files mk_iphoneos32.sh, mk_iphoneos64.sh, and mk_iphoneos_generic.sh present in this repo until fba4c52bfeaa44ea2a51cd89e0fc48a906d31d9d inclusive.
 
 if ! command -v ldid &> /dev/null; then # If ldid is not installed
-if ! command -v brew --version &> /dev/null; then
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-fi
-brew install ldid
+    echo "No ldid installed. Get ldid from https://github.com/ProcursusTeam/ldid"
+    exit 1
 fi
 
 if ! command -v dpkg --version &> /dev/null; then # If dpkg is not installed
-if ! command -v brew --version &> /dev/null; then
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-fi
-brew install dpkg
+    echo "No dpkg installed. Get dpkg from MacPorts"
+    exit 1
 fi
 
 if [ -z "$(ls -A ./ra1npoc)" ]; then
-git submodule init && git submodule update
+    git submodule init
+    git submodule update
 fi
 
-IOS_SDK="./SDKs/iPhoneOS9.2.sdk"
-MACOSX_SDK="./SDKs/MacOSX10.11.sdk"
+IOS_SDK="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk"
+MACOSX_SDK="/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
 FRAMEWORKS="-framework IOKit -framework CoreFoundation"
 FLAGS="-Os -DDEBUG -DIPHONEOS_ARM -DApple_A6"
 LIBCURL="./lib/dynamic/iphoneos-arm/libcurl.dylib"
@@ -58,21 +55,30 @@ ldid -Sent.xml ipwnder_iphoneos
 ldid -Sent.xml ipwnder_iphoneos64
 ldid -Sent.xml ipwnder_lite64
 
+printf '#!/bin/bash\n/usr/local/bin/ipwnder_lite -d\n' > /tmp/ipwnder
+chmod +x /tmp/ipwnder
+
 # Create rootful 32-bit DEB file
 rm -rf -- package && mkdir -p package/usr/local/bin && \
 mv ipwnder_iphoneos package/usr/local/bin/ipwnder_lite && \
+cp /tmp/ipwnder package/usr/local/bin/ipwnder && \
 mkdir package/DEBIAN && cp control package/DEBIAN/control && \
 find . -name ".DS_Store" -delete && dpkg-deb -Zgzip -b package && dpkg-name package.deb
 
 # Create rootful 64-bit DEB file (iOS 11+)
 rm -rf -- package && mkdir -p package/usr/local/bin && \
 mv ipwnder_iphoneos64 package/usr/local/bin/ipwnder_lite && \
+cp /tmp/ipwnder package/usr/local/bin/ipwnder && \
 mkdir package/DEBIAN && cp control64 package/DEBIAN/control && \
 find . -name ".DS_Store" -delete && dpkg-deb -Zgzip -b package && dpkg-name package.deb
+
+printf '#!/bin/bash\n/var/jb/usr/local/bin/ipwnder_lite -d\n' > /tmp/ipwnder
+chmod +x /tmp/ipwnder
 
 # Create rootless DEB file
 rm -rf -- package && mkdir -p package/var/jb/usr/local/bin && \
 mv ipwnder_lite64 package/var/jb/usr/local/bin/ipwnder_lite && \
+cp /tmp/ipwnder package/var/jb/usr/local/bin/ipwnder && \
 mkdir package/DEBIAN && cp control64_rootless package/DEBIAN/control && \
 find . -name ".DS_Store" -delete && dpkg-deb -b package && dpkg-name package.deb
 
