@@ -13,6 +13,7 @@ SOURCE		= \
 		exploit/checkm8/s8000.c \
 		exploit/checkm8/t8010.c \
 		exploit/limera1n/limera1n.c \
+		exploit/steaks4uce/steaks4uce.c \
 		common/common.c
 
 SOURCE32	= \

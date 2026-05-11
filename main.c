@@ -10,6 +10,7 @@
 #include <exploit/checkm8/s5l8950x.h>
 #endif
 #include <exploit/limera1n.h>
+#include <exploit/steaks4uce.h>
 #include <exploit/checkm8/s5l8960x.h>
 #include <exploit/checkm8/s8000.h>
 #include <exploit/checkm8/t8010.h>
@@ -54,6 +55,7 @@ static int dl_file(const char* url, const char* path, const char* realpath){
 static void list(void)
 {
     printf("Devices list:\n");
+    printf("\t\x1b[36ms5l8720x\x1b[39m - \x1b[35miPod touch 2G\x1b[39m\n");
     printf("\t\x1b[36ms5l8920x\x1b[39m - \x1b[35miPhone 3GS\x1b[39m\n");
     printf("\t\x1b[36ms5l8922x\x1b[39m - \x1b[35miPod touch 3G\x1b[39m\n");
     printf("\t\x1b[36ms5l8930x\x1b[39m - \x1b[35mApple A4\x1b[39m\n");
@@ -314,6 +316,12 @@ int main(int argc, char** argv)
             return -1;
         }
         r = limera1n(client);
+    } else if(client->devinfo.cpid == 0x8720){
+        if(client->isDemotion == true) {
+            ERROR("[%s] ERROR: demotion is only compatible with checkm8 exploit!", __FUNCTION__);
+            return -1;
+        }
+        r = steaks4uce(client);
     }
     
     return r;
