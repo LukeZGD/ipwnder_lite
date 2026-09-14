@@ -1,6 +1,6 @@
 #IGCC		= xcrun -sdk iphoneos gcc
 MGCC		= xcrun -sdk macosx gcc
-MGCC_FLAGS	= -I./include -framework IOKit -framework CoreFoundation -Os -Wall $(CFLAGS) -DDEBUG
+MGCC_FLAGS	= -I./include -framework IOKit -framework CoreFoundation -Os -Wall $(CFLAGS) -DDEBUG -arch x86_64 -arch arm64
 MGCC_FLAGS32	= -DApple_A6
 #IGCC_FLAGS	= $(MGCC_FLAGS) -DIPHONEOS_ARM
 #AARCH32	= -arch armv7
